@@ -1,7 +1,8 @@
 #sketchy module
 export DATA_DIR=../data
 export TASK_NAME=squad
-python ./examples/run_cls.py \
+CUDA_VISIBLE_DEVICES=$1 \
+python3 ./examples/run_cls.py \
     --model_type albert \
     --model_name_or_path albert-xxlarge-v2 \
     --task_name $TASK_NAME \
