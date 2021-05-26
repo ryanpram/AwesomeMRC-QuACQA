@@ -23,9 +23,11 @@ import logging
 import os
 import random
 import json
+import time
 
 import numpy as np
 import torch
+from contextlib import contextmanager
 from torch.utils.data import (DataLoader, RandomSampler, SequentialSampler,
                               TensorDataset)
 from torch.utils.data.distributed import DistributedSampler
@@ -71,6 +73,7 @@ logger = logging.getLogger(__name__)
 ALL_MODELS = sum((tuple(conf.pretrained_config_archive_map.keys()) for conf in (BertConfig, XLNetConfig, XLMConfig, 
                                                                                 RobertaConfig, DistilBertConfig)), ())
 
+@contextmanager
 def timer(name):
     t0 = time.time()
     yield
