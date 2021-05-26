@@ -1,5 +1,5 @@
 #sketchy module
-export DATA_DIR=data
+export DATA_DIR=../data
 export TASK_NAME=squad
 python ./examples/run_cls.py \
     --model_type albert \
