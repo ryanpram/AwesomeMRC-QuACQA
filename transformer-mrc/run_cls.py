@@ -71,6 +71,14 @@ logger = logging.getLogger(__name__)
 ALL_MODELS = sum((tuple(conf.pretrained_config_archive_map.keys()) for conf in (BertConfig, XLNetConfig, XLMConfig, 
                                                                                 RobertaConfig, DistilBertConfig)), ())
 
+def timer(name):
+    t0 = time.time()
+    yield
+    print(f'[{name}] done in {time.time() - t0:.0f} s')
+
+
+
+
 MODEL_CLASSES = {
     'bert': (BertConfig, BertForSequenceClassification, BertTokenizer),
     'xlnet': (XLNetConfig, XLNetForSequenceClassification, XLNetTokenizer),
@@ -115,8 +123,14 @@ def train(args, train_dataset, model, tokenizer):
     optimizer = AdamW(optimizer_grouped_parameters, lr=args.learning_rate, eps=args.adam_epsilon)
     scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=args.warmup_steps, num_training_steps=t_total)
     if args.fp16:
+        
         try:
-            from apex import amp
+            with timer('install Nvidia apex'):
+                # Installing Nvidia Apex
+                os.system('git clone https://github.com/NVIDIA/apex; cd apex; pip install -v --no-cache-dir' + 
+                            ' --global-option="--cpp_ext" --global-option="--cuda_ext" ./')
+                os.system('rm -rf apex/.git') # too many files, Kaggle fails
+                from apex import amp
         except ImportError:
             raise ImportError("Please install apex from https://www.github.com/nvidia/apex to use fp16 training.")
         model, optimizer = amp.initialize(model, optimizer, opt_level=args.fp16_opt_level)
