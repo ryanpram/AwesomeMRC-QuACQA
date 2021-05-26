@@ -572,16 +572,16 @@ class SQuADProcessor(DataProcessor):
     def get_train_examples(self, data_dir):
         """See base class."""
         return self._create_examples(
-            self._read_squad(os.path.join(data_dir, "train-v2.0.json")), "train")
+            self._read_squad(os.path.join(data_dir, "quac_train.json")), "train")
 
     def get_dev_examples(self, data_dir, answer_dir=None):
         """See base class."""
         if answer_dir:
             return self._create_examples(
-                self._read_squad(os.path.join(data_dir, "dev-v2.0.json")), "dev", self._read_ans(answer_dir))
+                self._read_squad(os.path.join(data_dir, "quac_dev.json")), "dev", self._read_ans(answer_dir))
         else:
             return self._create_examples(
-                self._read_squad(os.path.join(data_dir, "dev-v2.0.json")), "dev")
+                self._read_squad(os.path.join(data_dir, "quac_dev.json")), "dev")
 
     def get_test_examples(self, data_dir, answer_dir=None):
         """See base class."""
