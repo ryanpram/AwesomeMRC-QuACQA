@@ -528,7 +528,7 @@ class SquadProcessor(DataProcessor):
         i=0
         for entry in tqdm(input_data):
             # title = entry["title"]
-            title = 'example-'+ i
+            title = 'example-'+ str(i)
             for paragraph in entry["paragraphs"]:
                 context_text = paragraph["context"]
                 for qa in paragraph["qas"]:
