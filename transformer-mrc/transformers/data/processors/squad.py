@@ -525,8 +525,10 @@ class SquadProcessor(DataProcessor):
     def _create_examples(self, input_data, set_type):
         is_training = set_type == "train"
         examples = []
+        i=0
         for entry in tqdm(input_data):
-            title = entry["title"]
+            # title = entry["title"]
+            title = 'example-'+ i
             for paragraph in entry["paragraphs"]:
                 context_text = paragraph["context"]
                 for qa in paragraph["qas"]:
@@ -565,6 +567,7 @@ class SquadProcessor(DataProcessor):
                     )
 
                     examples.append(example)
+            i+=1
         return examples
 
 
