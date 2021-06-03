@@ -67,6 +67,9 @@ from transformers import glue_processors as processors
 from transformers import glue_convert_examples_to_features as convert_examples_to_features
 import sys
 import csv
+
+import matplotlib.pyplot as plt
+
 csv.field_size_limit(sys.maxsize)
 logger = logging.getLogger(__name__)
 
@@ -160,6 +163,7 @@ def train(args, train_dataset, model, tokenizer):
 
     global_step = 0
     tr_loss, logging_loss = 0.0, 0.0
+    logging_loss_his = []
     model.zero_grad()
     train_iterator = trange(int(args.num_train_epochs), desc="Epoch", disable=args.local_rank not in [-1, 0])
     set_seed(args)  # Added here for reproductibility (even between python 2 and 3)
@@ -212,6 +216,7 @@ def train(args, train_dataset, model, tokenizer):
                     logs['learning_rate'] = learning_rate_scalar
                     logs['loss'] = loss_scalar
                     logging_loss = tr_loss
+                    logging_loss_his.append(logs['loss'])
 
                     for key, value in logs.items():
                         tb_writer.add_scalar(key, value, global_step)
@@ -236,6 +241,18 @@ def train(args, train_dataset, model, tokenizer):
 
     if args.local_rank in [-1, 0]:
         tb_writer.close()
+
+    #training/validation per epoch
+    plt.plot(logging_loss_his)
+    plt.title('model loss')
+    plt.ylabel('logs loss')
+    plt.xlabel('step')
+    plt.legend(['train loss'], loc='upper left')
+    plt.savefig("./visualization/" + 'train_loss.png')
+    plt.show()
+    plt.clf()
+    plt.cla()
+    plt.close()
 
     return global_step, tr_loss / global_step
 
