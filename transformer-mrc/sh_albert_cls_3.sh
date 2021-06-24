@@ -19,5 +19,5 @@ python3 ./run_cls.py \
     --num_train_epochs 2.0 \
     --eval_all_checkpoints \
     --save_steps 2500 \
-    --output_dir squad/cls_squad2_albert-base-v2_lr2e-5_len512_bs48_ep2_wm814_f$
+    --output_dir squad/cls_squad2_albert-base-v2_lr2e-5_len512_bs48_ep2_wm814_f$ \
     --overwrite_output_dir
