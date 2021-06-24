@@ -21,6 +21,6 @@ python3 ./run_squad_av.py \
     --warmup_steps=814 \
     --output_dir squad/squad2_albert-base-v2_lr3e-5_len512_bs32_ep2_wm814_av_ce \
     --eval_all_checkpoints \
-    --save_steps 1000 \
+    --save_steps 3000 \
     --n_best_size=20 \
     --max_answer_length=30 \
