@@ -578,10 +578,10 @@ class SQuADProcessor(DataProcessor):
         """See base class."""
         if answer_dir:
             return self._create_examples(
-                self._read_squad(os.path.join(data_dir, "quac_dev.json")), "dev", self._read_ans(answer_dir))
+                self._read_squad(os.path.join(data_dir, "quac_val.json")), "dev", self._read_ans(answer_dir))
         else:
             return self._create_examples(
-                self._read_squad(os.path.join(data_dir, "quac_dev.json")), "dev")
+                self._read_squad(os.path.join(data_dir, "quac_val.json")), "dev")
 
     def get_test_examples(self, data_dir, answer_dir=None):
         """See base class."""
