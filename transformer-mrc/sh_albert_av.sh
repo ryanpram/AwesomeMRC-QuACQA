@@ -1,6 +1,8 @@
 #intensive module
 export SQUAD_DIR=../data
-python ./examples/run_squad_av.py \
+# export PYTHONPATH=$PYTHONPATH:./transformer-mrc/
+
+python3 ./run_squad_av.py \
     --model_type albert \
     --model_name_or_path albert-base-v2 \
     --do_train \
