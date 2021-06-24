@@ -1,7 +1,6 @@
 #intensive module
 export SQUAD_DIR=../data
-# export PYTHONPATH=$PYTHONPATH:./transformer-mrc/
-
+CUDA_VISIBLE_DEVICES=$1 \
 python3 ./run_squad_av.py \
     --model_type albert \
     --model_name_or_path albert-base-v2 \
