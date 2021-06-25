@@ -11,14 +11,15 @@ python3 ./run_squad_av.py \
     --train_file $SQUAD_DIR/quac_train.json \
     --predict_file $SQUAD_DIR/quac_val.json \
     --learning_rate 2e-5 \
-    --num_train_epochs 3 \
+    --num_train_epochs 5 \
     --max_seq_length 512 \
     --doc_stride 128 \
     --max_query_length=64 \
-    --per_gpu_train_batch_size=16 \
+    --per_gpu_train_batch_size=8 \
     --per_gpu_eval_batch_size=6 \
+    --gradient_accumulation_steps=4 \
     --warmup_steps=814 \
-    --output_dir squad/squad2_albert-base-v2_lr2e-5_len512_bs32_ep7_wm814_av_ce \
+    --output_dir squad/squad2_albert-base-v2_lr2e-5_len512_bs32_ep5_wm814_av_ce \
     --eval_all_checkpoints \
     --save_steps 3000 \
     --n_best_size=20 \
