@@ -17,7 +17,7 @@ This work is for advanced information retrieval course's final project. You can 
 ### Reproduce Step
 
 * Clone This Repo
-* Use Data from data. You can see preprocessing process at 
+* Use Data from [converted-quac-data](https://github.com/ryanpram/AwesomeMRC-QuACQA/blob/main/data/quac_splitted.zip). You can see preprocessing process at [preprocessing-quac-notebook](https://github.com/ryanpram/AwesomeMRC-QuACQA/blob/main/preprocessing-quac-notebook/preprocessing-quac.ipynb)
 * Run Sketchy Reader
 ```
 bash -x sh_albert_cls.sh
