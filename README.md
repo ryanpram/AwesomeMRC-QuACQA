@@ -66,8 +66,9 @@ python3 ./run_squad_av.py \
     --max_answer_length=30 \
 ```
 * Run Rear Verifier
+```
 python3 evaluate-v2.0.py data/quac_val.json transformer-mrc/predictions.json 
-
+```
 
 
 
