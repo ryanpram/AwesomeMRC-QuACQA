@@ -3,7 +3,7 @@
 The pre-trained Ansq-RoBERTa Large model (transfer model)  provided by [wqa_tanda repo](https://github.com/alexa/wqa_tanda).  The transformers directory and run_glue.py are adaptation and modification from [wqa_tanda repo](https://github.com/alexa/wqa_tanda), the rest is author's code.
 
 ## Description
-This work is for advanced information retrieval course's final project. You can read all detail work's description (in bahasa) at [technical-report](https://github.com/ryanpram/tanda-for-as2-covidQA/tree/main/technical-report)
+This work is for advanced information retrieval course's final project. You can read all detail work's description (in bahasa) at [technical-report](https://github.com/ryanpram/AwesomeMRC-QuACQA/tree/main/technical-report)
 
 
 
@@ -19,6 +19,10 @@ This work is for advanced information retrieval course's final project. You can 
 * Clone This Repo
 * Use Data from data. You can see preprocessing process at 
 * Run Sketchy Reader
+```
+bash -x sh_albert_cls.sh
+```
+Or
 ```
 python3 ./run_cls.py \
     --model_type albert \
@@ -40,6 +44,10 @@ python3 ./run_cls.py \
     --output_dir squad/cls_squad2_albert-base-v2_lr2e-5_len512_bs32_ep2_wm814_f$
 ```
 * Run Intensive Reader
+```
+bash -x sh_albert_av.sh
+```
+Or
 ```
 python3 ./run_squad_av.py \
     --model_type albert \
