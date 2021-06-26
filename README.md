@@ -1,6 +1,6 @@
 # Retrospective Reading for Machine Reading Comprehension on QuAC Dataset
 
-The pre-trained Ansq-RoBERTa Large model (transfer model)  provided by [wqa_tanda repo](https://github.com/alexa/wqa_tanda).  The transformers directory and run_glue.py are adaptation and modification from [wqa_tanda repo](https://github.com/alexa/wqa_tanda), the rest is author's code.
+The transformers directory is adapted from [AwesomeMRC](https://github.com/cooelf/AwesomeMRC) and quac_to_squad.py is adapted from [qa-dataset-converter](https://github.com/amazon-research/qa-dataset-converter).
 
 ## Description
 This work is for advanced information retrieval course's final project. You can read all detail work's description (in bahasa) at [technical-report](https://github.com/ryanpram/AwesomeMRC-QuACQA/tree/main/technical-report)
